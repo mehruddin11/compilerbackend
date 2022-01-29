@@ -29,6 +29,6 @@ app.post("/run" , async(req, res)=>{
     }
 })
 // listen
-app.listen(port =5000, () =>{
-    console.log(`App is litening to port ${port}`);
+app.listen(process.env.PORT ||  5000 , () =>{
+    console.log(`App is litening to port ${process.env.PORT}`);
 })
