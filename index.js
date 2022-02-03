@@ -26,9 +26,6 @@ app.post("/run" , async(req, res)=>{
             
             output = await executefile(filepath);
         }
-        else if(language==='cpp'){
-            output = await executeCpp(filepath)
-         }
          else if(language === 'js'){
              console.log(output)
             output =  await Excutejs(filepath)
@@ -41,6 +38,6 @@ app.post("/run" , async(req, res)=>{
     }
 })
 // listen
-app.listen(port =5000, () =>{
-    console.log(`App is litening to port ${port}`);
+app.listen(process.env.PORT  || 5000, () =>{
+    console.log(`App is litening to port ${process.env.PORT}`);
 })
