@@ -1,18 +1,18 @@
 const {exec} =require("child_process");
-const executefile = (filepath) =>{
-   return new Promise((resolve , reject) =>{
-     
-        exec(
-            `python ${filepath}`, 
+const Excutejs = async(filepath) =>{
+   return  new Promise((resolve , reject) =>{
+      exec(
+            `node ${filepath}`, 
         (error, stdout , stderr)=>{
             error && reject({error, stderr});
             stderr && reject({stderr});
-            resolve(stdout);
+            resolve(stdout)
+           
             }
         )
     });
 }
 
 module.exports= {
-    executefile,
+    Excutejs,
 }
