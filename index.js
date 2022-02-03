@@ -8,7 +8,6 @@ app.use(cors());
 // middleware
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use(cors());
 // url parameter 
 app.get('/', (req, res)=>{
     return res.json({hello:"hello word"});
