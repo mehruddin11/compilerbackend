@@ -1,6 +1,6 @@
 var express = require('express');
 const {generatefile} = require('./generatefile')
-const {executefile} = require('./executefile')
+// const {executefile} = require('./executefile')
 const {Excutejs} = require('./executeJs')
 const cors = require('cors');
 const app =express();
@@ -22,16 +22,10 @@ app.post("/run" , async(req, res)=>{
     try{
         const  filepath = await generatefile(language, code);
         let output;
-        if(language ===  'js'){
-            
-            output =  await Excutejs(filepath)
-        }
-        else{
-            output = await executefile(filepath);
-             
-            
-        }
-     return res.json({filepath, output});
+        
+            output = await Excutejs(filepath);
+        
+        return res.json({filepath, output});
     }
     catch(err){
       res.status(500).json(err)
