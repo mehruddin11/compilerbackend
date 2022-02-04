@@ -8,13 +8,13 @@ const app =express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 
 app.get('/', (req, res)=>{
     return res.json({hello:"hello word"});
 });
 app.post("/run" , async(req, res)=>{
-    const {language ="python" , code }= req.body;
+    const {language  , code }= req.body;
     if (code ===undefined) {
 
     return res.status(400).json({success:false,error:"Empty Code Body !"})
