@@ -4,11 +4,12 @@ const {executefile} = require('./executefile')
 const {Excutejs} = require('./executeJs')
 const cors = require('cors');
 const app =express();
-// middleware
+
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-// url parameter 
+
 app.use(cors());
+
 app.get('/', (req, res)=>{
     return res.json({hello:"hello word"});
 });
@@ -21,13 +22,13 @@ app.post("/run" , async(req, res)=>{
     try{
         const  filepath = await generatefile(language, code);
         let output;
-        if(language ===  'py'){
+        if(language ===  'js'){
             
-            output = await executefile(filepath);
+            output =  await Excutejs(filepath)
         }
         else{
+            output = await executefile(filepath);
              
-            output =  await Excutejs(filepath)
             
         }
      return res.json({filepath, output});
